@@ -52,9 +52,17 @@
                         <tr>
                             <td>{{ $loop->iteration  }}</td>
                             <td>{{ $pelamar->name }}</td>
-                            <td>{{ \Carbon\Carbon::parse($pelamar->tgl_lamar)->format('d/m/Y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($pelamar->tgl_lamar)->locale('id')->isoFormat('D MMMM YYYY') }}</td>
                             <td><a href="{{ asset($pelamar->filepath.$pelamar->filename) }}">RESUME</td></a>
-                            <td class="badge bg-dark mt-1 ml-1">{{ ($pelamar->status==0 ? "Menunggu" : ($pelamar->status==1 ? "Interview" :($pelamar->status==2 ? "Ditolak" : "Diterima"))) }}</td>
+                            <td class=" {{ 
+                                ($pelamar->status == 0 ? 'bg-warning' : 
+                                ($pelamar->status == 1 ? 'bg-primary' : 
+                                ($pelamar->status == 2 ? 'bg-danger' : 'bg-success'))) 
+                                        }}">
+                                {{ ($pelamar->status == 0 ? 'Menunggu' : 
+                                ($pelamar->status == 1 ? 'Interview' : 
+                                ($pelamar->status == 2 ? 'Ditolak' : 'Diterima'))) }}
+                                </td>
                             <td>
                                 @if ($pelamar->status==0)
                                     <a class="btn btn-xs btn-success" href="{{ route("update_status_lamar",["id_lamar"=>$pelamar->id,"status"=>1]) }}"><i class="fas fa-check-circle"></i></a>
@@ -67,9 +75,9 @@
                         </tr>
                     @endforeach
                 @else
-                        <tr>
-                            <td colspan="4" class="text-center pt-3" ><b><p>- BELUM ADA PELAMAR -</p></b></td>
-                        </tr>
+                    <tr>
+                        <td colspan="4" class="text-center pt-3" ><b><p>- BELUM ADA PELAMAR -</p></b></td>
+                    </tr>
                 @endif
             </tbody>
         </table>

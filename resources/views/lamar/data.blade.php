@@ -29,7 +29,7 @@
                             <td>{{ $rsLamar->alamat_low }}</td>
                             {{-- <td>{{ $rsLamar->desc_low }}</td> --}}
                             {{-- <td>{{ $rsLamar->kriteria_low }}</td> --}}
-                            <td>{{ \Carbon\Carbon::parse($rsLamar->deadline)->format('d/m/Y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($rsLamar->deadline)->locale('id')->isoFormat('D MMMM YYYY') }}</td>
                             <td>{{ $rsLamar->sistem_kerja }}</td>
                             <td class="text-center"><a href={{ route("detail_loker",["id_lowongan"=>$rsLamar->id]) }}>{{ $rsLamar->jumlah_pelamar }}</td></a>
                             {{-- <td>
