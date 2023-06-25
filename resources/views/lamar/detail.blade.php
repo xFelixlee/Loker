@@ -62,7 +62,7 @@
                                 {{ ($pelamar->status == 0 ? 'Menunggu' : 
                                 ($pelamar->status == 1 ? 'Interview' : 
                                 ($pelamar->status == 2 ? 'Ditolak' : 'Diterima'))) }}
-                                </td>
+                            </td>
                             <td>
                                 @if ($pelamar->status==0)
                                     <a class="btn btn-xs btn-success" href="{{ route("update_status_lamar",["id_lamar"=>$pelamar->id,"status"=>1]) }}"><i class="fas fa-check-circle"></i></a>
