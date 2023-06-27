@@ -19,7 +19,11 @@ return new class extends Migration
             $table->string('alamat_low',100);
             $table->string('desc_low',100);
             $table->string('kriteria_low',100);
+            $table->date('deadline');
+            $table->enum('sistem_kerja', ['FT', 'PT'])->default('FT');
+            $table->string('posisi');
             $table->text('foto');
+            $table->enum('status', ['O', 'P'])->default('O');
             $table->timestamps();
         });
     }
