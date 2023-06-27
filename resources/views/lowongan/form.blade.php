@@ -106,9 +106,20 @@
                     <div class="form-group">
                         <label for="deadline">Deadline</label>
                         <input type="hidden" name="id_user" value="{{ @$rsLow->id }}">
-                        <input type="date" class="form-control @error('deadline') is-invalid @enderror" name="deadline" id="deadline" value="{{ @$rsPeng->deadline }}">
+                        <input type="date" class="form-control @error('deadline') is-invalid @enderror" name="deadline" id="deadline" value="{{ @$rsLow->deadline }}">
                         @error('deadline')
                             <div id="deadline" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="posisi">Posisi</label>
+                        <input type="hidden" name="posisi" value="{{ @$rsLow->id }}">
+                        <input type="text" class="form-control @error('posisi') is-invalid @enderror" name="posisi" id="posisi" placeholder="Posisi" value="{{ @$rsLow->posisi }}">
+                        @error('posisi')
+                            <div id="posisi" class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror

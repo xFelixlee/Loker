@@ -55,6 +55,7 @@ class lowonganCtrl extends Controller
                     'desc_low' =>$req->input('desc_low'),
                     'kriteria_low' =>$req->input('kriteria_low'),
                     'deadline' =>$req->input('deadline'),
+                    'posisi' =>$req->input('posisi'),
                     'sistem_kerja' =>$req->input('sistem_kerja'),
                     'foto' => $foto,
                 ]
