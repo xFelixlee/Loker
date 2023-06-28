@@ -86,6 +86,7 @@ Route::group(["middleware"=>"auth"],function(){
     Route::get("user/form/{id_user?}",[datauserCtrl::class,"form"]);
     Route::get("datauser/registrasi",[datauserCtrl::class,"registrasi"])->name("signup");
     Route::post("datauser/registrasi",[datauserCtrl::class,"save_registrasi"]);
+    Route::post("datauser/save_akun",[datauserCtrl::class,"save_akun"])->name("edit");
     });
 
     // LAMAR

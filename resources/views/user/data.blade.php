@@ -18,7 +18,8 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Password</th>
-                    <th>Level</th>
+                    <th>Role</th>
+                    <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,7 +29,10 @@
                             <td>{{ $rsUser->name }}</td>
                             <td>{{ $rsUser->email }}</td>
                             <td>{{ $rsUser->password }}</td>
-                            <td>{{ $rsUser->level }}</td>
+                            <td>{{ $rsUser->role }}</td>
+                            <td>
+                                <a href="{{ url("user/form/".$rsUser->id) }}"><i class="text-warning fas fa-edit"></i></a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

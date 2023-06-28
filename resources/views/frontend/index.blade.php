@@ -6,7 +6,31 @@
     <!-- Info boxes -->
     <div class="container">
 
-        <div class="row mt-5">
+        @php
+           $file_u = DB::table('file')->where('id_users',Auth::user()->id)->count();
+            $pendidikan = DB::table('pendidikan')->where('id_user',Auth::user()->id)->count();
+            $pengalaman = DB::table('pengalaman')->where('id_user',Auth::user()->id)->count();
+            $biodata = DB::table('biodata')->where('id_user',Auth::user()->id)->count();
+        @endphp
+        @if (Auth::user()->role == 'Admin') 
+
+        @else
+        @if ($file_u > 0 && $pendidikan > 0 && $pengalaman > 0 && $biodata > 0)
+        @else
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="card bg-gradient-danger">
+                    <div class="card-body">
+                    Silahkan lengkapi Biodata , pengalaman , pendidikan dan resume dulu <a class="text-light" href="{{url("/biodata")}}">Disini !</a>
+                    </div>
+                    
+                    </div>
+            </div>
+        </div>
+        @endif
+        @endif
+
+        <div class="row mt-2">
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="small-box bg-dark">
                     <div class="inner">
@@ -128,6 +152,49 @@
             </div>
     
         </div>
+        @php
+            $dthistory = DB::table('lamar as a')
+            ->join('users as b','a.id_users','b.id')
+            ->join('lowongan as c','a.id_lowongan','c.id')
+            ->selectraw('a.*,b.name,c.nama_low,c.perusahaan_low')
+            ->where('a.id_users',Auth::user()->id)->get();
+        @endphp
+        @if ($dthistory->count() > 0)
+            <div class="row mt-2">
+                <div class="col-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Perusahaan</th>
+                                <th>Tanggal Lamar</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($dthistory as $history)
+                            <tr>
+                                <td>{{ $history->nama_low }}</td>
+                                <td>{{ $history->perusahaan_low }}</td>
+                                <td>{{ $history->tgl_lamar }}</td>
+                                <td>
+                                    @if($history->status == 0)
+                                        <span class="badge bg-warning">Menunggu</span>
+                                    @elseif($history->status == 1)
+                                        <span class="badge bg-primary">Interview</span>
+                                    @elseif($history->status == 2)
+                                        <span class="badge bg-danger">Ditolak</span>
+                                    @elseif($history->status == 3)
+                                        <span class="badge bg-success">Diterima</span>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 {{-- End Main Content --}}

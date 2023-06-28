@@ -37,7 +37,7 @@
 
                     <div class="form-group">
                         <label for="id_cat">Category</label>                        
-                        <select class="form-control @error('id_cat') is-invalid @enderror" name="id_cat" id="id_cat">
+                        <select class="form-control @error('id_cat') is-invalid @enderror" name="id_cat" id="id_cat" required>
                             <option value="">- Kategori -</option>
                             @foreach ($dtCat as $rsCat)
                                 <option value="{{ $rsCat->id }}" {{ @$rsLow->id_cat==$rsCat->id ? "selected" : "" }}>{{ $rsCat->cat_nm }}</option>

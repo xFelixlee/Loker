@@ -67,9 +67,10 @@
                                 @if ($pelamar->status==0)
                                     <a class="btn btn-xs btn-success" href="{{ route("update_status_lamar",["id_lamar"=>$pelamar->id,"status"=>1]) }}"><i class="fas fa-check-circle"></i></a>
                                     <a class="btn btn-xs btn-danger ml-2" href="{{ route("update_status_lamar",["id_lamar"=>$pelamar->id,"status"=>2]) }}"><i class="fas fa-times-circle"></i></a>
-                                @endif
+                                    @endif
                                 @if ($pelamar->status==1)
                                     <a class="btn btn-xs btn-success" href="{{ route("update_status_lamar",["id_lamar"=>$pelamar->id,"status"=>3])}}"><i class="fas fa-check"></i> TERIMA</a>
+                                    <a class="btn btn-xs btn-danger ml-2" href="{{ route("update_status_lamar",["id_lamar"=>$pelamar->id,"status"=>2]) }}"><i class="fas fa-times-circle"></i> TOLAK</a>
                                 @endif
                             </td>
                         </tr>

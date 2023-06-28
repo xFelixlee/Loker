@@ -19,7 +19,7 @@ class frontendCtrl extends Controller
         $data = [
             'dtLow' => lowongan::when($req->id_cat, function($query) use($req) {
                 $query->where('id_cat', $req->id_cat);
-            })->get(),
+            })->whereraw('deadline >= CURDATE()')->get(),
             'rsLowongan' => lowongan::all()
         ];
 

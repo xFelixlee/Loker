@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use PDOException;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,7 +36,20 @@ class AuthCtrl extends Controller
         // Cek Login
         if(Auth::attempt(['name' => $req->name, 'password' => $req->password])){
             $req->session()->regenerate();
-            return redirect('/'); // Dashboard
+            $file_u = DB::table('file')->where('id_users',Auth::user()->id)->count();
+            $pendidikan = DB::table('pendidikan')->where('id_user',Auth::user()->id)->count();
+            $pengalaman = DB::table('pengalaman')->where('id_user',Auth::user()->id)->count();
+            $biodata = DB::table('biodata')->where('id_user',Auth::user()->id)->count();
+            if (Auth::user()->role == 'Admin') {
+                return redirect('/dashboard'); // Dashboard
+            } else {
+                if($file_u > 0 && $pendidikan > 0 && $pengalaman > 0 && $biodata > 0){
+                    return redirect('/'); // Dashboard
+                }else{
+                    return redirect('/biodata'); // Dashboard
+                }
+            }
+            
         }
 
         // Jika user dan password salah maka Kembali ke form Login
