@@ -1,4 +1,5 @@
 @extends('frontend.template')
+@section("title",$title)
 @section('content')
 
     {{-- Main Content --}}

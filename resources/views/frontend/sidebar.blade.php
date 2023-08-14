@@ -42,15 +42,6 @@
                         </p>
                     </a>
                 </li>
-                {{-- History --}}
-                <li class="nav-item">
-                    <a href="{{ url('history') }}" class="nav-link {{ ($title=='history') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-history"></i>
-                        <p>
-                            History
-                        </p>
-                    </a>
-                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

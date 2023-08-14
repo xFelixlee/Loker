@@ -35,10 +35,13 @@
                     </div>
                 </form> --}}
                 <li class="nav-item">
-                    <a href="/" class="nav-link">Home</a>
+                    <a href="{{ url('/') }}" class="nav-link {{ ($title=='home') ? 'active' : '' }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="low" class="nav-link">lowongan</a>
+                    <a href="{{ url('low') }}" class="nav-link {{ ($title=='low') ? 'active' : '' }}">Lowongan</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('history') }}" class="nav-link {{ ($title=='history') ? 'active' : '' }}">History</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"

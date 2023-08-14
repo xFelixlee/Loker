@@ -12,7 +12,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('dist/img/profile.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                <img id="profile-image" src="{{ asset('dist/img/profile.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="javascript:void(0)" class="d-block ml-2">{{ @Auth::user()->name }} ( {{ @Auth::user()->level }} ) </a>
@@ -114,7 +114,7 @@
                 {{-- Lamar --}}
                 <li class="nav-item">
                     <a href="{{ url('lamar') }}" class="nav-link {{ ($title=='lamar') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-home"></i>
+                        <i class="nav-icon fas fa-paste"></i>
                         <p>
                             Lamar
                         </p>
@@ -169,6 +169,22 @@
         });
         return false; // Hindari aksi logout langsung dari tautan
     }
+
+    // Ambil data biodata menggunakan JavaScript
+    var userId = "{{ Auth::user()->id }}";
+    var url = "/api/biodata/" + userId;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            // Periksa apakah ada foto biodata yang tersedia
+            if (data.foto) {
+                document.getElementById('profile-image').src = data.foto;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 </script>
 
 

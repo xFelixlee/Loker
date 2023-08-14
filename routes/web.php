@@ -31,6 +31,7 @@ Route::group(["middleware"=>"auth"],function(){
     // FRONT END
     Route::get('/',[frontendCtrl::class,"index"]);
     Route::get('low',[frontendCtrl::class,"lowongan"]);
+    Route::get('history',[frontendCtrl::class,"history"]);
     Route::get("detail_low/{id_lowongan}",[frontendCtrl::class,"detail"]);
     Route::get("dashboard",[dashboardCtrl::class,"index"]);
 
@@ -54,9 +55,6 @@ Route::group(["middleware"=>"auth"],function(){
     // Resume
     Route::get("resume",[resumeCtrl::class,"index"]);
     Route::post("resume/store", [resumeCtrl::class, 'store']);
-    
-    // History  
-    Route::get("history",[historyCtrl::class,"index"]);
 
     // DASHBOARD
     Route::group(["middleware"=>"roleAdmin"],function(){        

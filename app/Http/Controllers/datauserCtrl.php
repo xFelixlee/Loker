@@ -56,6 +56,7 @@ class datauserCtrl extends Controller
                 "name" => $req->name,
                 "email" => $req->email,
                 "password" => Hash::make($req->password),
+                "level" => $req->level,
                 "role" => $req->role,
                 "status" => 1
             ]);
@@ -101,14 +102,16 @@ class datauserCtrl extends Controller
                 "name" => $req->name,
                 "email" => $req->email,
                 "password" => $pass,
-                "level" => $req->role,
+                "role" => $req->role,
+                "level" => $req->level,
             ]);
         } else {
             DB::table('users')->insert([
                 "name" => $req->name,
                 "email" => $req->email,
                 "password" => $pass,
-                "level" => $req->role,
+                "role" => $req->role,
+                "level" => $req->level,
             ]);
         }
         

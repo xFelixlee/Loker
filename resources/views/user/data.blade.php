@@ -19,6 +19,7 @@
                     <th>Email</th>
                     <th>Password</th>
                     <th>Role</th>
+                    <th>Level</th>
                     <th>Action</th>
                     </tr>
                 </thead>
@@ -30,6 +31,7 @@
                             <td>{{ $rsUser->email }}</td>
                             <td>{{ $rsUser->password }}</td>
                             <td>{{ $rsUser->role }}</td>
+                            <td>{{ $rsUser->level }}</td>
                             <td>
                                 <a href="{{ url("user/form/".$rsUser->id) }}"><i class="text-warning fas fa-edit"></i></a>
                             </td>

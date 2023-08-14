@@ -56,6 +56,19 @@
                     @enderror
                 </div>
 
+                <div class="form-group">
+                    <label for="level">level</label>
+                    <select class="form-control @error('level') is-invalid @enderror" name="level" id="level" class="form-control">
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                    @error('level')
+                    <div id="level" class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
                 <div class="form-group text-center">
                     <input type="submit" class="btn btn-dark" value="S A V E">
                 </div>                     

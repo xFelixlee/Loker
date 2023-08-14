@@ -7,6 +7,8 @@ use App\Models\lamar;
 use App\Models\resume;
 use App\Models\biodata;
 use App\Models\lowongan;
+use App\Models\pendidikan;
+use App\Models\pengalaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -53,11 +55,14 @@ class lamarCtrl extends Controller
 
         // Validation Resume
         $resume = resume::where("id_users",Auth::user()->id)->first();
+        $biodata = biodata::where("id_user",Auth::user()->id)->first();
+        $pendidikan = pendidikan::where("id_user",Auth::user()->id)->first();
+        $pengalaman = pengalaman::where("id_user",Auth::user()->id)->first();
 
-        if(!isset($resume)){
+        if(!isset($resume) || !isset($biodata) || !isset($pendidikan) || !isset($pengalaman)){
             $notif = [
                 'type' => 'warning',
-                'text' => 'Maaf anda belum mengupload resume !'
+                'text' => 'Silahkan lengkapi Biodata , Pengalaman , Pendidikan dan Resume Terlebih Dahulu!'
             ];
         } else {
 
@@ -84,6 +89,4 @@ class lamarCtrl extends Controller
     
         return redirect()->back()->with($notif);
     }
-
-
 }
