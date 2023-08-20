@@ -24,7 +24,7 @@ if (alertMessage) {
   // Mengatur timeout untuk menghilangkan elemen alert setelah 3 detik
     setTimeout(function() {
         alertMessage.style.display = "none";
-    }, 5000);
+    }, 3000);
 }
 
 

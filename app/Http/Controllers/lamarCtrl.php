@@ -20,8 +20,8 @@ class lamarCtrl extends Controller
         $dtLoker = DB::select("SELECT lowongan.*,(SELECT COUNT(*) FROM lamar WHERE lamar.id_lowongan = lowongan.id) AS jumlah_pelamar FROM lowongan WHERE STATUS = 'O'");
 
         $data = [
-            "title" => "Lamar",
-            "page" => "Lamar",
+            "title" => "lamar",
+            "page" => "lamar",
             "dtLoker" => $dtLoker
         ];
 
@@ -37,8 +37,8 @@ class lamarCtrl extends Controller
             ->select("lamar.*","users.name","file.filename","file.filepath")
             ->where("lamar.id_lowongan",$req->id_lowongan)
             ->get(),
-            "title" => "Lamar",
-            "page" => "Lamar",
+            "title" => "lamar",
+            "page" => "lamar",
         ];
         return view("lamar.detail",$data);
     }

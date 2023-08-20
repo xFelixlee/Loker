@@ -169,22 +169,6 @@
         });
         return false; // Hindari aksi logout langsung dari tautan
     }
-
-    // Ambil data biodata menggunakan JavaScript
-    var userId = "{{ Auth::user()->id }}";
-    var url = "/api/biodata/" + userId;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            // Periksa apakah ada foto biodata yang tersedia
-            if (data.foto) {
-                document.getElementById('profile-image').src = data.foto;
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
 </script>
 
 

@@ -5,7 +5,7 @@
 @section('content')
 
 <ul id = "ul" class="list-group col-md-6">
-    <li class="list-group-item" style="background-color: #f0b663"><strong>{{ $rsLow->mn_nama }}</strong></li>
+    <li class="list-group-item" style="background-color: #343A40"><strong>{{ $rsLow->mn_nama }}</strong></li>
     <li class="list-group-item">
         <br>
         <img class="thumb-menu-bigg" src="{{ asset($rsLow->foto) }}" alt="{{ $rsLow->mn_nama }}"> 

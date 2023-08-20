@@ -20,15 +20,23 @@ class frontendCtrl extends Controller
     }
 
     function lowongan(Request $req) {
+        $query = lowongan::when($req->id_cat, function($query) use($req) {
+            $query->where('id_cat', $req->id_cat);
+        })->whereRaw('deadline >= CURDATE()');
+    
+        $dtLowongan = $query->get();
+    
         $data = [
             'title' => 'low',
-            'dtLow' => lowongan::when($req->id_cat, function($query) use($req) {
-                $query->where('id_cat', $req->id_cat);
-            })->whereraw('deadline >= CURDATE()')->get(),
-            'rsLowongan' => lowongan::all()
+            'dtLow' => $dtLowongan,
+            'rsLowongan' => lowongan::all(),
         ];
-
-        return view("frontend/low",$data);
+    
+        if ($dtLowongan->isEmpty()) {
+            $data['noLowonganMessage'] = "Maaf, lowongan sedang tidak tersedia.";
+        }
+    
+        return view("frontend/low", $data);
     }
 
     function detail(Request $req){

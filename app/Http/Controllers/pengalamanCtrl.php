@@ -50,12 +50,12 @@ class pengalamanCtrl extends Controller
             // Notif
             $notif = [
                 'type' => 'success',
-                'text' => 'pengalaman Berhasil disimpan !'
+                'text' => 'Pengalaman Berhasil Disimpan !'
             ];
         } catch(PDOException $err){
             $notif = [
                 'type' => 'danger',
-                'text' => 'pengalaman Gagal disimpan !'.$err->getMessage()
+                'text' => 'Pengalaman Gagal Disimpan !'.$err->getMessage()
             ];
         }
         return redirect(url('pengalaman'))->with($notif);
@@ -69,12 +69,12 @@ class pengalamanCtrl extends Controller
             // Notif
             $notif = [
                 'type' => 'success',
-                'text' => 'pengalaman Berhasil dihapus !'
+                'text' => 'Pengalaman Berhasil Dihapus !'
             ];
         } catch(PDOException $err){
             $notif = [
                 'type' => 'danger',
-                'text' => 'pengalaman Gagal dihapus !'.$err->getMessage()
+                'text' => 'Pengalaman Gagal Dihapus !'.$err->getMessage()
             ];
         }
         return redirect(url('pengalaman'))->with($notif);
